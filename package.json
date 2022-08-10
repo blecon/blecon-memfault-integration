@@ -1,0 +1,19 @@
+{
+    "name": "blecon-memfault-integration",
+    "version": "1.0.0",
+    "engines": {
+      "node": "12.x"
+    },
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+      "express": "^4.17.1",
+      "ws": "^7.2.0"
+    }
+  }

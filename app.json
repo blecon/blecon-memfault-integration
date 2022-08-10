@@ -1,0 +1,7 @@
+{
+  "name": "Blecon/Memfault Integration",
+  "description": "Blecon request handler for Memfault",
+  "repository": "https://github.com/blecon/blecon-memfault-integration",
+  "logo": "https://blecon.net/Blecon-Logo-RGB-Vertical-Colour-Black.png",
+  "keywords": ["blecon", "memfault", "integration"]
+}
