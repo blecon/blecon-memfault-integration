@@ -4,13 +4,13 @@
     "engines": {
       "node": "12.x"
     },
-    "description": "",
+    "description": "Blecon Memfault integration",
     "main": "index.js",
     "scripts": {
       "start": "node server.js"
     },
     "keywords": [],
-    "author": "",
+    "author": "Donatien Garnier <hello@blecon.net>",
     "license": "MIT",
     "dependencies": {
       "express": "^4.17.1",

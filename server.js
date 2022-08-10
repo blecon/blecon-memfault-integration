@@ -1,3 +1,8 @@
+/**
+ * Copyright 2022 Blecon Ltd
+ * SPDX-License-Identifier: MIT
+ */
+
 'use strict';
 
 const express = require('express');
