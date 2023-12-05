@@ -2,7 +2,7 @@
     "name": "blecon-memfault-integration",
     "version": "1.0.0",
     "engines": {
-      "node": "12.x"
+      "node": "20.x"
     },
     "description": "Blecon Memfault integration",
     "main": "index.js",

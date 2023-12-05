@@ -24,7 +24,7 @@ const server = express()
     let device_id = req.body['network_headers']['device_id'];
     let payload = Buffer.from(req.body['request_data']['payload'], 'hex');;
     await sendToMemfault(device_id, payload);
-    res.json({ response: "" });
+    res.json({ response_data: { payload: '00'} });
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
