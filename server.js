@@ -10,11 +10,14 @@ const https = require('https');
 
 const PORT = process.env.PORT || 3000;
 const MEMFAULT_PROJECT_KEY = process.env.MEMFAULT_PROJECT_KEY;
+const MEMFAULT_ORGANIZATION_NAME = process.env.MEMFAULT_ORGANIZATION_NAME;
+const MEMFAULT_PROJECT_NAME = process.env.MEMFAULT_PROJECT_NAME;
 const BLECON_SECRET = process.env.BLECON_SECRET;
 const INDEX = '/index.html';
 
 const server = express()
-  .use(express.json())
+  
+server.use(express.json())
   .post('/', async (req, res) => {
     if(req.get('Blecon-Secret') != BLECON_SECRET) {
       res.status(401).send('Unauthorized');
@@ -25,8 +28,14 @@ const server = express()
     let payload = Buffer.from(req.body['request_data']['payload'], 'hex');;
     await sendToMemfault(device_id, payload);
     res.json({ response_data: { payload: '00'} });
-  })
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+  });
+
+// Redirect /device?device_id=... to https://app.memfault.com/organizations/<organization>/projects/<project>/devices/<uuid>
+server.get('/device', (req, res) => {
+  res.redirect('https://app.memfault.com/organizations/' + MEMFAULT_ORGANIZATION_NAME + '/projects/' + MEMFAULT_PROJECT_NAME + '/devices/' + req.query.device_id);
+});
+
+server.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 function sendToMemfault(device_id, payload) {
   return new Promise((resolve, reject) => {
