@@ -24,8 +24,10 @@ server.use(express.json())
       return;
     }
 
+    console.log("Blecon request: ", req.body);
+
     let device_id = req.body['network_headers']['device_id'];
-    let payload = Buffer.from(req.body['request_data']['payload'], 'hex');;
+    let payload = Buffer.from(req.body['request_data']['payload'], 'hex');
     await sendToMemfault(device_id, payload);
     res.json({ response_data: { payload: '00'} });
   });
