@@ -27,6 +27,13 @@ server.use(express.json())
     console.log("Blecon request: ", req.body);
 
     let device_id = req.body['network_headers']['device_id'];
+
+    // If Payload is not a string, reject
+    if(typeof req.body['request_data']['payload'] != 'string') {
+      res.status(400).send('Bad Request');
+      return;
+    }
+
     let payload = Buffer.from(req.body['request_data']['payload'], 'hex');
     await sendToMemfault(device_id, payload);
     res.json({ response_data: { payload: '00'} });
